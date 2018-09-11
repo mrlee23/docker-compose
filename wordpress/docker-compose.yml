@@ -1,0 +1,40 @@
+version: '2'
+
+services:
+  wordpress:
+    container_name: wordpress 
+    image: wordpress
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - ./wp-content:/var/www/html/wp-content
+    links: 
+      - db
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_PASSWORD: mysqlrootpassword1234567890
+  db:
+    container_name:  wordpress_db
+    image: mariadb
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./db/mysql:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: mysqlrootpassword1234567890
+      MYSQL_DATABASE: wp
+      MYSQL_USER: wordpress_db
+      MYSQL_PASSWORD: mysqlwordpressdbpassword1234567890
+  phpmyadmin:
+    container_name: wordpress_pma
+    image: phpmyadmin/phpmyadmin
+    depends_on: 
+      - db
+    restart: always
+    ports:
+      - "8080:80"
+    environment:
+     - PMA_ARBITRARY=1

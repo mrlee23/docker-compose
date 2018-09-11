@@ -1,0 +1,39 @@
+#+TITLE: wordpress
+
+* Summary
+** Combined volumes
+- ./db/ : for DB data directory
+- ./wp-content/ : for wordpress content(plugins, themes, uploads, ...)
+
+** Published ports
+- 80 : Wordpress service
+- 3306 : DB port
+- 8080 : phpmyadmin
+
+** Environment variables
+
+*** wordpress
+| Name                  | Value                       | Description |
+|-----------------------+-----------------------------+-------------|
+| WORDPRESS_DB_HOST     | db:3306                     |             |
+| WORDPRESS_DB_PASSWORD | mysqlrootpassword1234567890 |             |
+
+*** wordpress_db
+| Name                | Value                              | Description                            |
+|---------------------+------------------------------------+----------------------------------------|
+| MYSQL_ROOT_PASSWORD | mysqlrootpassword1234567890        | DB root password                       |
+| MYSQL_DATABASE      | wp                                 | DB name                                |
+| MYSQL_USER          | wordpress_db                       | DB user name                           |
+| MYSQL_PASSWORD      | mysqlwordpressdbpassword1234567890 | DB password for user name wordpress_db |
+
+*** wordpress_pma
+| Name          | Value | Description                                                      |
+|---------------+-------+------------------------------------------------------------------|
+| PMA_ARBITRARY |     1 | When set to 1 connection to the arbitrary server will be allowed |
+
+* Launch
+#+BEGIN_SRC sh
+$ sudo docker-compose up -d
+#+END_SRC
+
+* References
