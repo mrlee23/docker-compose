@@ -1,6 +1,11 @@
 #+TITLE: wordpress
 
 * Summary
+** Running containers
+- wordpress : wordpress engine
+- wordpress_db : db for wordpress
+- wordpress_pma : phpmyadmin for db
+
 ** Combined volumes
 - ./db/ : for DB data directory
 - ./wp-content/ : for wordpress content(plugins, themes, uploads, ...)

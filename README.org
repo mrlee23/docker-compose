@@ -1,6 +1,6 @@
 #+TITLE: Docker compose apps
 
 * Apps
-- wordpress
+- [[./wordpress/README.org][wordpress]]
 - xpressengine
 - gitlab

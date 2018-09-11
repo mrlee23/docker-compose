@@ -2,7 +2,7 @@ version: '2'
 
 services:
   wordpress:
-    container_name: wordpress 
+    container_name: wordpress
     image: wordpress
     depends_on:
       - db
@@ -17,7 +17,7 @@ services:
       WORDPRESS_DB_HOST: db:3306
       WORDPRESS_DB_PASSWORD: mysqlrootpassword1234567890
   db:
-    container_name:  wordpress_db
+    container_name: wordpress_db
     image: mariadb
     ports:
       - "3306:3306"
