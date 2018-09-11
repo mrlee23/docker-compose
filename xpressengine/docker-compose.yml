@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+  xe:
+    container_name: xe
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    volumes:
+      - "./xe:/var/www/html"
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+  db:
+    container_name: xe_db
+    image: mariadb:5.5
+    environment:
+      MYSQL_ROOT_PASSWORD: xpressenginerootpassword123412341234
+      MYSQL_DATABASE: xe
+      MYSQL_USER: xe_db
+      MYSQL_PASSWORD: xpressengine123412341234
+    volumes:
+      - ./db/mysql:/var/lib/mysql:rw
+    ports:
+      - "3306:3306"
+  phpmyadmin:
+    container_name: xe_pma
+    image: phpmyadmin/phpmyadmin:4.7
+    depends_on:
+      - db
+    ports:
+      - "8000:80"
+    environment:
+     - PMA_ARBITRARY=1

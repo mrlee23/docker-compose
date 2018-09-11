@@ -2,5 +2,5 @@
 
 * Apps
 - [[./wordpress/README.org][wordpress]]
-- xpressengine
+- [[./xpressengine/README.org][xpressengine]]
 - gitlab

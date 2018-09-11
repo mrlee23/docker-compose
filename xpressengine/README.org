@@ -1,0 +1,39 @@
+#+TITLE: xpressengine
+
+* Summary
+** Running containers
+- xe : xpressengine
+- xe_db : db for xpressengine
+- xe_pma : phpyadmin for db
+
+** Combined volumes
+- ./db/ : for DB data directory
+- ./xe/ : for xpress engine content(serve this directory in web server)
+
+** Published ports
+- 80 : XE service
+- 3306 : DB port
+- 8080 : phpmyadmin
+
+** Environment variables
+
+*** xe_db
+| Name                | Value                                | Description                     |
+|---------------------+--------------------------------------+---------------------------------|
+| MYSQL_ROOT_PASSWORD | xpressenginerootpassword123412341234 | DB root password                |
+| MYSQL_DATABASE      | xe                                   | DB name                         |
+| MYSQL_USER          | xe_db                                | DB user name                    |
+| MYSQL_PASSWORD      | xpressengine123412341234             | DB password for user name xe_db |
+
+*** xe_pma
+| Name          | Value | Description                                                      |
+|---------------+-------+------------------------------------------------------------------|
+| PMA_ARBITRARY |     1 | When set to 1 connection to the arbitrary server will be allowed |
+
+* Launch
+#+BEGIN_SRC sh
+$ ./build.sh
+$ sudo docker-compose up -d
+#+END_SRC
+
+* References
